@@ -1,17 +1,43 @@
 // ==============================
-// 🌗 Dark Mode Toggle
+// Dark Mode Toggle
 // ==============================
 const themeToggle = document.getElementById("theme-toggle");
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-    document.body.classList.toggle("dark:bg-gray-900");
-    document.body.classList.toggle("dark:text-white");
-  });
+const themeIcon = themeToggle.querySelector("i");
+
+function setIcon(isDark) {
+  if (isDark) {
+    themeIcon.classList.remove("fa-sun");
+    themeIcon.classList.add("fa-moon");
+  } else {
+    themeIcon.classList.remove("fa-moon");
+    themeIcon.classList.add("fa-sun");
+  }
 }
 
+// Toggle dark mode
+themeToggle.addEventListener("click", () => {
+  const html = document.documentElement;
+  html.classList.toggle("dark");
+  const isDark = html.classList.contains("dark");
+  setIcon(isDark);
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
+
+// On page load
+window.addEventListener("DOMContentLoaded", () => {
+  const theme = localStorage.getItem("theme");
+  if (theme === "dark") {
+    document.documentElement.classList.add("dark");
+    setIcon(true);
+  } else {
+    document.documentElement.classList.remove("dark");
+    setIcon(false);
+  }
+});
+
+
 // ==============================
-// 🌍 Helper: Fetch All Countries
+// Helper: Fetch All Countries
 // ==============================
 async function getCountries() {
   const res = await fetch('./data.json');
@@ -22,7 +48,7 @@ async function getCountries() {
 }
 
 // ==============================
-// 🏠 Home Page Logic
+// Home Page Logic
 // ==============================
 const countriesContainer = document.getElementById("countries-container");
 const searchInput = document.getElementById("search-input");
@@ -81,7 +107,7 @@ if (countriesContainer) {
 }
 
 // ==============================
-// 🧾 Details Page Logic
+//  Details Page Logic
 // ==============================
 const detailContainer = document.getElementById("country-detail");
 
