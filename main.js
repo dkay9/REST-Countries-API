@@ -118,26 +118,30 @@ if (detailContainer) {
     detailContainer.innerHTML = "<p class='text-center text-red-500'>No country selected.</p>";
   } else {
     detailContainer.innerHTML = `
-      <button onclick="window.history.back()" class="mb-6 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded shadow">
+      <button onclick="window.history.back()" class="mb-6 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded shadow cursor-pointer">
         ← Back
       </button>
       <div class="grid md:grid-cols-2 gap-10">
-        <img src="${country.flags.png}" alt="${country.name.common}" class="w-full h-auto">
+        <div class="w-full">
+          <img src="${country.flags.png}" alt="${country.name.common}" class="w-full h-auto">
+        </div>
         <div class="space-y-4">
           <h2 class="text-2xl font-bold">${country.name}</h2>
-          <p><strong>Official Name:</strong> ${country.name.official}</p>
-          <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
-          <p><strong>Region:</strong> ${country.region}</p>
-          <p><strong>Subregion:</strong> ${country.subregion || "N/A"}</p>
-          <p><strong>Capital:</strong> ${country.capital}</p>
-          <p><strong>Languages:</strong> ${country.languages ? Object.values(country.languages).join(", ") : "N/A"}</p>
-          <p><strong>Currencies:</strong> ${
-            country.currencies
-              ? Object.values(country.currencies)
-                  .map((cur) => `${cur.name} (${cur.symbol})`)
-                  .join(", ")
-              : "N/A"
-          }</p>
+          <div class="flex w-full justify-between">
+            <div>
+              <p><strong>Native Name:</strong> ${country.nativeName}</p>
+              <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
+              <p><strong>Region:</strong> ${country.region}</p>
+              <p><strong>Sub Region:</strong> ${country.subregion || "N/A"}</p>
+              <p><strong>Capital:</strong> ${country.capital}</p>
+            </div>
+            <div>
+              <p><strong>Top Level Domain:</strong> ${country.topLevelDomain}</p>
+              <p><strong>Languages:</strong> ${country.languages.map(lang => lang.name).join(', ') || "N/A"}</p>
+              <p><strong>Currencies:</strong> ${country.currencies?.[0]?.symbol || "N/A"}</p>
+            </div>
+          </div>
+          
         </div>
       </div>
     `;
