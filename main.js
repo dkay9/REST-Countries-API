@@ -125,9 +125,9 @@ if (detailContainer) {
         <div class="w-full">
           <img src="${country.flags.png}" alt="${country.name.common}" class="w-full h-auto">
         </div>
-        <div class="space-y-4">
+        <div class="space-y-4 pt-9">
           <h2 class="text-2xl font-bold">${country.name}</h2>
-          <div class="flex w-full justify-between">
+          <div class="flex w-full justify-between pt-4 leading-8">
             <div>
               <p><strong>Native Name:</strong> ${country.nativeName}</p>
               <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
@@ -140,8 +140,11 @@ if (detailContainer) {
               <p><strong>Languages:</strong> ${country.languages.map(lang => lang.name).join(', ') || "N/A"}</p>
               <p><strong>Currencies:</strong> ${country.currencies?.[0]?.symbol || "N/A"}</p>
             </div>
-          </div>
-          
+          </div> 
+          <p class="pt-10"><strong>Border Countries:</strong> ${country.borders.slice(0, 3).map(code => 
+            `<span class="inline-block bg-gray-200 dark:bg-gray-700 text-sm px-2 py-1 rounded mr-2">${code}</span>
+            `).join("")}
+          </p>
         </div>
       </div>
     `;

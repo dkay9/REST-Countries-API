@@ -17,7 +17,7 @@
 </head>
 <body class="bg-white text-black dark:bg-gray-900 dark:text-white">
     <!-- Navigation Bar -->
-    <nav class="flex justify-between items-center w-full px-8 py-8 shadow-[0_8px_8px_-9px_rgba(0,0,0,0.3)]">
+    <nav class="flex justify-between items-center w-full px-20 py-8 shadow-[0_8px_8px_-9px_rgba(0,0,0,0.3)]">
         <h1 class="font-bold">Where in the world?</h1>
         <div class="flex justify-end gap-2 items-center cursor-pointer" id="theme-toggle">
             <i class="fa-solid fa-moon"></i>
@@ -26,7 +26,7 @@
     </nav>
 
     <!-- Main -->
-    <section class="flex justify-between gap-2 mb-4 mt-8 px-8">
+    <section class="flex justify-between gap-2 mb-4 mt-8 px-20">
         <input class="bg-white dark:bg-gray-800 p-4 w-96 shadow-[0_0_10px_-4px_rgba(0,0,0,0.3)]" type="text" id="search-input" placeholder="Search for a country ...">
         <select class="bg-white dark:bg-gray-800 dark:text-white p-4 w-48 shadow-[0_0_10px_-4px_rgba(0,0,0,0.3)]" id="region-filter">
             <option value="">Filter by Region</option>
@@ -37,7 +37,7 @@
             <option value="Oceania">Oceania</option>
         </select>        
     </section>
-    <section class="mx-4 px-8 my-8 grid gap-5 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]" id="countries-container"></section>
+    <section class="mx-4 px-20 my-8 grid gap-5 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]" id="countries-container"></section>
 
     <script src="main.js"></script>
 </body>
