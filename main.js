@@ -63,7 +63,7 @@ if (countriesContainer) {
     data.forEach((country) => {
       const card = document.createElement("div");
       card.className =
-        "bg-white dark:bg-gray-800 rounded-md shadow-md overflow-hidden cursor-pointer transition hover:scale-[1.02]";
+        "bg-white dark:bg-gray-800 rounded-md overflow-hidden cursor-pointer transition hover:scale-[1.02]";
       card.innerHTML = `
         <img src="${country.flags.png}" alt="${country.name.common}" class="w-full h-48 object-cover">
         <div class="p-5 space-y-2">
@@ -88,7 +88,7 @@ if (countriesContainer) {
     const query = searchInput.value.toLowerCase();
     const region = regionFilter.value;
     const filtered = countriesData.filter((country) => {
-      const nameMatch = country.name.common.toLowerCase().includes(query);
+      const nameMatch = country.name.toLowerCase().includes(query);
       const regionMatch = region === "" || country.region === region;
       return nameMatch && regionMatch;
     });
@@ -118,7 +118,7 @@ if (detailContainer) {
     detailContainer.innerHTML = "<p class='text-center text-red-500'>No country selected.</p>";
   } else {
     detailContainer.innerHTML = `
-      <button onclick="window.history.back()" class="mb-6 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded shadow cursor-pointer">
+      <button onclick="window.history.back()" class="mb-6 px-4 py-2 bg-white dark:bg-gray-700 rounded cursor-pointer" style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);">
         ← Back
       </button>
       <div class="grid md:grid-cols-2 gap-10">
@@ -127,7 +127,7 @@ if (detailContainer) {
         </div>
         <div class="space-y-4 pt-9">
           <h2 class="text-2xl font-bold">${country.name}</h2>
-          <div class="flex w-full justify-between pt-4 leading-8">
+          <div class="flex flex-col md:flex-row w-full justify-between pt-4 leading-8">
             <div>
               <p><strong>Native Name:</strong> ${country.nativeName}</p>
               <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
@@ -142,7 +142,7 @@ if (detailContainer) {
             </div>
           </div> 
           <p class="pt-10"><strong>Border Countries:</strong> ${country.borders.slice(0, 3).map(code => 
-            `<span class="inline-block bg-gray-200 dark:bg-gray-700 text-sm px-2 py-1 rounded mr-2">${code}</span>
+            `<span class="inline-block bg-white dark:bg-gray-700 text-sm px-2 py-1 rounded mr-2" style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);">${code}</span>
             `).join("")}
           </p>
         </div>
