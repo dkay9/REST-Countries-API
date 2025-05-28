@@ -1,6 +1,4 @@
-// ==============================
 // Dark Mode Toggle
-// ==============================
 const themeToggle = document.getElementById("theme-toggle");
 const themeIcon = themeToggle.querySelector("i");
 
@@ -36,9 +34,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ==============================
-// Helper: Fetch All Countries
-// ==============================
+// Fetch All Countries
 async function getCountries() {
   const res = await fetch('./data.json');
   if (!res.ok) {
@@ -47,9 +43,7 @@ async function getCountries() {
   return await res.json();
 }
 
-// ==============================
 // Home Page Logic
-// ==============================
 const countriesContainer = document.getElementById("countries-container");
 const searchInput = document.getElementById("search-input");
 const regionFilter = document.getElementById("region-filter");
@@ -64,6 +58,7 @@ if (countriesContainer) {
       const card = document.createElement("div");
       card.className =
         "bg-white dark:bg-gray-800 rounded-md overflow-hidden cursor-pointer transition hover:scale-[1.02]";
+      card.style.boxShadow = "0 0 5px rgba(0, 0, 0, 0.15)";
       card.innerHTML = `
         <img src="${country.flags.png}" alt="${country.name.common}" class="w-full h-48 object-cover">
         <div class="p-5 space-y-2">
@@ -106,9 +101,7 @@ if (countriesContainer) {
   regionFilter.addEventListener("change", filterCountries);
 }
 
-// ==============================
 //  Details Page Logic
-// ==============================
 const detailContainer = document.getElementById("country-detail");
 
 if (detailContainer) {
